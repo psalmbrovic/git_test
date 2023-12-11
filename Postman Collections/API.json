@@ -353,7 +353,7 @@
 								}
 							}
 						},
-						"url": "{{baseurl}}/v2/api/admin/create_service_config"
+						"url": "{{baseurl}}/api/admin/create_service_config"
 					},
 					"response": [
 						{
@@ -514,7 +514,7 @@
 								}
 							}
 						},
-						"url": "https://api.woven.finance/v2/api/admin/create_service_config"
+						"url": "{{baseurl}}/api/admin/create_service_config"
 					},
 					"response": [
 						{
