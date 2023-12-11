@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "30d91eda-af30-4403-9f9d-835520346343",
+		"name": "Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "Reguser",
+					"id": "cb2d504e-d0af-4b54-8417-2cb62fa46217",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"email\": \"{{email}}\",\r\n\t\"password\": \"{{password}}\"\r\n}"
+						},
+						"url": "https://regres.in/{{endpoint}}"
+					},
+					"response": []
+				},
+				{
+					"name": "JSON Schema Validation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "15995f41-d4e8-4dc9-ba0b-5a8a1365534f",
+								"exec": [
+									" var schema = {\r",
+									"    \"definitions\": {},\r",
+									"    \"$schema\": \"http://json-schema.org/draft-07/schema#\",\r",
+									"    \"$id\": \"http://example.com/root.json\",\r",
+									"    \"type\": \"object\",\r",
+									"    \"required\": [\r",
+									"      \"data\"\r",
+									"    ],\r",
+									"    \"properties\": {\r",
+									"     \"data\": {\r",
+									"       \"$id\": \"#/properties/data\",\r",
+									"       \"type\": \"object\",\r",
+									"       \"required\": [\r",
+									"         \"id\",\r",
+									"         \"email\",\r",
+									"         \"first_name\",\r",
+									"         \"last_name\",\r",
+									"         \"avatar\"\r",
+									"       ],\r",
+									"       \"properties\": {\r",
+									"         \"id\": {\r",
+									"           \"$id\": \"#/properties/data/properties/id\",\r",
+									"           \"type\": \"number\"\r",
+									"         },\r",
+									"         \"email\": {\r",
+									"           \"$id\": \"#/properties/data/properties/email\",\r",
+									"           \"type\": \"string\",\r",
+									"           \"pattern\": \"^(.*)$\"\r",
+									"         },\r",
+									"         \"first_name\": {\r",
+									"           \"$id\": \"#/properties/data/properties/first_name\",\r",
+									"           \"type\": \"string\",\r",
+									"           \"pattern\": \"^(.*)$\"\r",
+									"         },\r",
+									"         \"last_name\": {\r",
+									"           \"$id\": \"#/properties/data/properties/last_name\",\r",
+									"           \"type\": \"string\",\r",
+									"           \"pattern\": \"^(.*)$\"\r",
+									"         },\r",
+									"         \"avatar\": {\r",
+									"           \"$id\": \"#/properties/data/properties/avatar\",\r",
+									"           \"type\": \"string\",\r",
+									"           \"pattern\": \"^(.*)$\"\r",
+									"         }\r",
+									"       }\r",
+									"     }\r",
+									"   }\r",
+									" }\r",
+									"\r",
+									"pm.test(\"schema Validation\",function() {\r",
+									"    \r",
+									"    var result=tv4.validateResult(pm.response.json(),schema);\r",
+									"    \r",
+									"    if(result.valid){\r",
+									"        console.log(result);\r",
+									"    }\r",
+									"    pm.expect(result.valid).to.be.true;\r",
+									"    \r",
+									"    })\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "f554a709-f9a8-4b44-bffa-3372c361910c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://reqres.in/api/users/2"
+					},
+					"response": []
+				}
+			],
+			"id": "fb73ab18-4ede-4e33-ba78-1342ab04bbce"
+		},
+		{
+			"name": "Getuser",
+			"id": "9ffd54b6-6597-4936-919f-23feac5d0352",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get user",
+			"id": "e27f7937-51b8-44c0-b322-f857c8d3eb81",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users?page=1",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				},
+				"description": "list user"
+			},
+			"response": []
+		}
+	]
+}
